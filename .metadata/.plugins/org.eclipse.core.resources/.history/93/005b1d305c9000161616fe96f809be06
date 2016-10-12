@@ -1,0 +1,89 @@
+import java.io.InputStream;
+import java.util.Scanner;
+
+public class StateMachine implements Runnable {
+
+	
+	private int index = 0;
+
+	public static void main(String[]args) {
+		StateMachine sm = new StateMachine();
+		sm.run();
+	}
+
+	public void run() {
+		boolean done = false;
+		Scanner scan = new Scanner(System.in);
+		while (!done) {
+			System.out.println("Start Convo");
+			String input = scan.nextLine();
+			States state = States.StateA;
+			while (state != States.StateP) {
+				char currentChar = nextChar(input.toLowerCase());
+				switch (state) {
+				case StateA:
+					if (currentChar == 'h') {
+						state = States.StateB;
+					} else if (currentChar != 'h') {
+						state = States.StateA;
+					} else {
+						state = States.StateP;
+					}
+					break;
+				case StateB:
+					if (currentChar == 'i' || currentChar == 'o') {
+						state = States.StateE;
+					} else if (currentChar == 'h') {
+						state = States.StateB;
+					} else {
+						state = States.StateA;
+					}
+					break;
+				case StateC:
+					break;
+				case StateD:
+					break;
+				case StateE:
+					if (currentChar == 'i') {
+						state = States.StateG;
+					}
+					break;
+				case StateF:
+					break;
+				case StateG:
+					System.out.println("Hello");
+					state = States.StateP;
+					break;
+				case StateH:
+					break;
+				case StateI:
+					System.out.println("Let's ride buckaroo!");
+					state = States.StateP;
+					break;
+				case StateJ:
+					System.out.println("Fine, and you?");
+					state = States.StateP;
+					break;
+				case StateP:
+					break;
+				}
+			}
+
+		}
+
+	}
+
+	public char nextChar(String input) {
+		char c = 0;
+		if (index != input.length() - 1) {
+			c = input.charAt(index);
+			index++;
+		}
+		return c;
+	}
+
+	enum States {
+		StateA, StateB, StateC, StateD, StateE, StateF, StateG, StateH, StateI, StateJ, StateP
+	}
+
+}
