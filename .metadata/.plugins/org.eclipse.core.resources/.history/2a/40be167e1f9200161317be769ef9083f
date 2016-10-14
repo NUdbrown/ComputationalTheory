@@ -40,17 +40,14 @@ public class StateMachine implements Runnable {
 			int inputCount = input.length();
 			while (index < inputCount) {
 				String currentChar = "" + input.toLowerCase().charAt(index++);
-				//System.out.println("currentChar: " + currentChar + " next-index: " + index);
+				System.out.println("currentChar: " + currentChar + " next-index: " + index);
 				switch (state) {
 				case StateA:
 					if (currentChar.equals("h")) {
 						state = MachineStates.StateB;
 					} else if (currentChar.equals("b")) {
 						state = MachineStates.StateV;
-					} else if(currentChar.equals("e")){
-						state = MachineStates.StateY;
-					}
-					else {
+					} else {
 						state = MachineStates.StateA;
 					}
 					break;
@@ -216,10 +213,7 @@ public class StateMachine implements Runnable {
 	}
 
 	public enum MachineStates {
-		StateA, StateB, StateC, StateD, StateE, StateF, StateG, StateH,
-		StateI, StateJ, StateK, StateL, StateM, StateN, StateO, StateP, 
-		StateQ, StateR, StateS, StateT, StateU, StateV, StateW, StateX, 
-		StateY, StateZ, StateA2, StateB2
+		StateA, StateB, StateC, StateD, StateE, StateF, StateG, StateH, StateI, StateJ, StateK, StateL, StateM, StateN, StateO, StateP, StateQ, StateR, StateS, StateT, StateU, StateV, StateW, StateX, StateY, StateZ, StateA2, StateB2
 	}
 
 }

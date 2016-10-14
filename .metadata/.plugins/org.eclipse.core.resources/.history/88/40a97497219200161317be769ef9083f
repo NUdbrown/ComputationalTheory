@@ -40,7 +40,7 @@ public class StateMachine implements Runnable {
 			int inputCount = input.length();
 			while (index < inputCount) {
 				String currentChar = "" + input.toLowerCase().charAt(index++);
-				//System.out.println("currentChar: " + currentChar + " next-index: " + index);
+				System.out.println("currentChar: " + currentChar + " next-index: " + index);
 				switch (state) {
 				case StateA:
 					if (currentChar.equals("h")) {
