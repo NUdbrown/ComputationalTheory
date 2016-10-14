@@ -17,25 +17,20 @@ public class StateMachine implements Runnable {
 		System.out.println("Start Convo!");
 		while (!done) {
 			System.out.println("Enter Message: ");
-			String input = scan.nextLine();
 			index = 0;
-			int inputCount = input.length();
+			String input = scan.nextLine();
 			MachineStates state = MachineStates.StateA;
-			while (index < inputCount) {
+			while (index != input.length()-1) {
 				String currentChar = nextChar(input.toLowerCase());
-				System.out.println("currentChar: "+ currentChar + " next-index: " + index); 
+				System.out.println("currentChar: "+ currentChar); 
 				switch (state) {
 				case StateA:
 					if(currentChar.equals("h")){
 						state = MachineStates.StateB;
-					}
-					else if(currentChar.equals("b")){
-						state = MachineStates.StateV;
-					}
-					else{
+					}else{
 						state = MachineStates.StateA;
 					}
-					break;
+					//break;
 				case StateB:
 					if(currentChar.equals("i")){
 						state = MachineStates.StateC;
@@ -46,37 +41,34 @@ public class StateMachine implements Runnable {
 					else{
 						state = MachineStates.StateB;					
 					}
-					break;
+					//break;
 				case StateC:
 					System.out.println("Hello");				
 					break;
 				case StateD:
 					if(currentChar.equals("w")){
 						state = MachineStates.StateE;
-					}else if(currentChar.equals(" ")){
+					}else if(currentChar.equals("/w")){
 						state = MachineStates.StateH;
 					}
 					else{
 						state = MachineStates.StateD;
 					}
-					break;
 				case StateE:
-					if(currentChar.equals("d")){
+					if(currentChar.equals("D")){
 						state = MachineStates.StateF;
-					}else if(currentChar.equals(" ")){
+					}else if(currentChar.equals("/w")){
 						state = MachineStates.StateN;
 					}
 					else{
 						state = MachineStates.StateE;
 					}
-					break;
 				case StateF:
 					if(currentChar.equals("Y")){
 						state = MachineStates.StateG;
 					}else{
 						state = MachineStates.StateF;
 					}
-					break;
 				case StateG:
 					System.out.println("Let's ride buckaroo!");					
 					break;
@@ -86,35 +78,30 @@ public class StateMachine implements Runnable {
 					}else{
 						state = MachineStates.StateH;
 					}
-					break;
 				case StateI:
 					if(currentChar.equals("o")){
 						state = MachineStates.StateJ;
 					}else{
 						state = MachineStates.StateI;
-					}	
-					break;
+					}					
 				case StateJ:
-					if(currentChar.equals(" ")){
+					if(currentChar.equals("/w")){
 						state = MachineStates.StateK;
 					}else{
 						state = MachineStates.StateJ;
 					}
-					break;
 				case StateK:
 					if(currentChar.equals("h")){
 						state = MachineStates.StateL;
 					}else{
 						state = MachineStates.StateK;
 					}
-					break;
 				case StateL:
 					if(currentChar.equals("o")){
 						state = MachineStates.StateM;
 					}else{
 						state = MachineStates.StateL;
 					}
-					break;
 				case StateM:
 					System.out.println("Who do you think you are, Santa?");
 					break;
@@ -124,70 +111,24 @@ public class StateMachine implements Runnable {
 					}else{
 						state = MachineStates.StateN;
 					}
-					break;
 				case StateO:
 					if(currentChar.equals("r")){
 						state = MachineStates.StateP;
 					}else{
 						state = MachineStates.StateO;
 					}
-					break;
 				case StateP:
 					if(currentChar.equals("e")){
 						state = MachineStates.StateQ;
 					}else{
 						state = MachineStates.StateP;
 					}
-					break;
 				case StateQ:
-					if(currentChar.equals(" ")){
+					if(currentChar.equals("/w")){
 						state = MachineStates.StateR;
 					}else{
 						state = MachineStates.StateQ;
-					}
-					break;
-				case StateR:
-					if(currentChar.equals("y")){
-						state = MachineStates.StateS;
-					}else{
-						state = MachineStates.StateR;
-					}
-					break;
-				case StateS:
-					if(currentChar.equals("o")){
-						state = MachineStates.StateT;
-					}else{
-						state = MachineStates.StateS;
-					}
-					break;
-				case StateT:
-					if(currentChar.equals("u")){
-						state = MachineStates.StateU;
-					}else{
-						state = MachineStates.StateT;
-					}
-					break;
-				case StateU:
-					System.out.println("Fine, and you?");
-					break;	
-				case StateV:
-					if(currentChar.equals("y")){
-						state = MachineStates.StateW;
-					}else{
-						state = MachineStates.StateV;
-					}
-					break;
-				case StateW:
-					if(currentChar.equals("e")){
-						state = MachineStates.StateX;
-					}else{
-						state = MachineStates.StateW;
-					}
-					break;
-				case StateX:
-					System.out.println("Bye");	
-					done = !done;
-					break;
+					}	
 				}
 			}
 
@@ -206,10 +147,7 @@ public class StateMachine implements Runnable {
 	}
 
 	enum MachineStates {
-		StateA, StateB, StateC, StateD, StateE, StateF, StateG, 
-		StateH, StateI, StateJ, StateK, StateL, StateM, StateN, 
-		StateO, StateP, StateQ, StateR, StateS, StateT, StateU,
-		StateV, StateW, StateX, StateY, StateZ, StateA2, StateB2
+		StateA, StateB, StateC, StateD, StateE, StateF, StateG, StateH, StateI, StateJ, StateK, StateL, StateM, StateN, StateO, StateP, StateQ
 	}
 
 }
