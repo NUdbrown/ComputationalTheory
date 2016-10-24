@@ -9,7 +9,8 @@ public class StateMachine implements Runnable {
 		sm.run();
 
 	}
-
+	
+	@Override
 	public void run() {
 		boolean done = false;
 		Scanner scan = new Scanner(System.in);

@@ -1,0 +1,154 @@
+import java.util.Scanner;
+
+public class StateMachine implements Runnable{
+	private int index;
+	private int inputCount;
+	
+	public static void main(String[] args) {
+		StateMachine sm = new StateMachine();
+		sm.run();
+	}
+
+	@Override
+	public void run() {
+		boolean done = false;
+		Scanner scan = new Scanner(System.in);
+		MachineStates currentState = MachineStates.StateA;
+		String input = null;
+		//System.out.println("You may start your convo now.");
+		while(!done){
+			if(currentState == MachineStates.StateI){
+				System.out.println("Hi!");
+				currentState = MachineStates.StateA;
+			}else if(index == inputCount && currentState == MachineStates.StateK){
+				System.out.println("You must be quite the jolly person");
+				currentState = MachineStates.StateA;
+			}
+
+			System.out.println("Enter message:");
+			input = scan.nextLine();
+			inputCount = input.length();
+			index = 0;
+			while (index < inputCount) {
+				String currentChar = "" + input.toUpperCase().charAt(index++);
+
+				switch(currentState){
+				case StateA:
+					if(currentChar.equals("H")){
+						currentState = MachineStates.StateB;
+					}else if(currentChar.equals("E")){
+						currentState = MachineStates.StateC;
+					}else{
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateB:
+					if(currentChar.equals("E")){
+						currentState = MachineStates.StateD;
+					}else if(currentChar.equals("O")){
+						currentState = MachineStates.StateE;								
+					}else{
+						
+					}
+					break;
+				case StateC:
+					if(currentChar.equals("X")){
+
+					}else{
+						
+					}
+				case StateD:
+					if(currentChar.equals("L")){
+						currentState = MachineStates.StateF;
+					}else{
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateE:
+					if(currentChar.equals("W")){
+						currentState = MachineStates.StateJ;
+					}else if(currentChar.equals(" ")){
+						currentState = MachineStates.StateK;
+					}else{
+						
+					}
+					break;
+				case StateF:
+					if(currentChar.equals("L")){
+						currentState = MachineStates.StateG;
+					}else{
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateG:
+					if(currentChar.equals("O")){
+						currentState = MachineStates.StateH;
+					}else{
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateH:
+					if(currentChar.equals("O")){
+						currentState = MachineStates.StateH;
+					}else{
+						currentState = MachineStates.StateI;
+					}
+					break;
+				case StateJ:
+					if(currentChar.equals("D")){
+						currentState = MachineStates.StateL;
+					}else if(currentChar.equals(" ")){
+						currentState = MachineStates.StateM;
+					}else{
+						
+					}
+					break;
+				case StateK:
+					if(currentChar.equals("H")|| currentChar.equals("O")){
+						currentState = MachineStates.StateK;
+					}else{
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateL:
+					break;
+				case StateM:
+					break;
+				case StateN:
+					break;
+				case StateO:
+					break;
+				case StateP:
+					break;
+				case StateQ:
+					break;
+				case StateR:
+					break;
+				case StateS:
+					break;
+				case StateT:
+					break;
+				case StateU:
+					break;
+				case StateV:
+					break;
+				case StateW:
+					break;
+				case StateX:
+					break;
+				case StateY:
+					break;
+				case StateZ:
+					break;
+				case StateA2:
+					break;
+				default:
+					System.out.println("Tell me about yourself.");
+					break;	
+				}
+
+			}
+		}
+	}
+
+}

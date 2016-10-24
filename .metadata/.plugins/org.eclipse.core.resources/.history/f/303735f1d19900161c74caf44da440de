@@ -1,0 +1,206 @@
+import java.util.Scanner;
+
+public class StateMachine implements Runnable {
+	private int index;
+
+	public static void main(String[] args) {
+		StateMachine sm = new StateMachine();
+		sm.run();
+	}
+
+	@Override
+	public void run() {
+		boolean done = false;
+		Scanner scan = new Scanner(System.in);
+		MachineStates currentState = MachineStates.StateA;
+		System.out.println("You may start your convo now.");
+
+		while (!done) {
+			if (currentState == MachineStates.StateI) {
+				System.out.println("Hi!");
+				currentState = MachineStates.StateA;
+			} else if (currentState == MachineStates.StateN) {
+				System.out.println("Let's Ride!");
+				currentState = MachineStates.StateA;
+			} else if (currentState == MachineStates.StateW) {
+				System.out.println("I do fine, and you?");
+				currentState = MachineStates.StateA;
+			} else if (currentState == MachineStates.StateX) {
+				System.out.println("You must be quite the jolly person");
+				currentState = MachineStates.StateA;
+			} else if (currentState == MachineStates.StateA2) {
+				System.out.println("Bye!");
+				done = !done;
+				break;
+			}
+
+			System.out.println("Enter message: ");
+			String input = scan.nextLine();
+			index = 0;
+			int inputCount = input.length();
+			while (index < inputCount) {
+				String currentChar = "" + input.toUpperCase().charAt(index++);
+
+				switch (currentState) {
+				case StateA:
+					if (currentChar.equals("H")) {
+						currentState = MachineStates.StateB;
+					} else if (currentChar.equals("E")) {
+						currentState = MachineStates.StateC;
+					} else {
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateB:
+					if (currentChar.equals("E")) {
+						currentState = MachineStates.StateD;
+					} else if (currentChar.equals("O")) {
+						currentState = MachineStates.StateE;
+					} else {
+
+					}
+					break;
+				case StateC:
+					if (currentChar.equals("X")) {
+						currentState = MachineStates.StateY;
+					} else {
+
+					}
+				case StateD:
+					if (currentChar.equals("L")) {
+						currentState = MachineStates.StateF;
+					} else {
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateE:
+					if (currentChar.equals("W")) {
+						currentState = MachineStates.StateJ;
+					} else if (currentChar.equals(" ")) {
+						currentState = MachineStates.StateK;
+					} else {
+
+					}
+					break;
+				case StateF:
+					if (currentChar.equals("L")) {
+						currentState = MachineStates.StateG;
+					} else {
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateG:
+					if (currentChar.equals("O")) {
+						currentState = MachineStates.StateH;
+					} else {
+						currentState = MachineStates.StateA;
+					}
+					break;
+				case StateH:
+					if (currentChar.equals("O")) {
+						currentState = MachineStates.StateH;
+						if (index == (inputCount - 1)) {
+							currentState = MachineStates.StateI;
+						}
+					} else {
+					}
+					break;
+				case StateJ:
+					if (currentChar.equals("D")) {
+						currentState = MachineStates.StateL;
+					} else if (currentChar.equals(" ")) {
+						currentState = MachineStates.StateM;
+					} else {
+
+					}
+					break;
+				case StateK:
+					if (currentChar.equals("H") || currentChar.equals("O")) {
+						currentState = MachineStates.StateK;
+						if (index == (inputCount - 1)) {
+							currentState = MachineStates.StateX;
+						}
+					} else {
+
+					}
+					break;
+				case StateL:
+					if (currentChar.equals("Y")) {
+						currentState = MachineStates.StateN;
+					} else {
+
+					}
+					break;
+				case StateM:
+					if (currentChar.equals("D")) {
+						currentState = MachineStates.StateO;
+					} else {
+					}
+					break;
+				case StateO:
+					if (currentChar.equals("O")) {
+						currentState = MachineStates.StateP;
+					} else {
+					}
+					break;
+				case StateP:
+					if (currentChar.equals(" ")) {
+						currentState = MachineStates.StateQ;
+					} else {
+					}
+					break;
+				case StateQ:
+					if (currentChar.equals("Y")) {
+						currentState = MachineStates.StateR;
+					} else {
+					}
+					break;
+				case StateR:
+					if (currentChar.equals("O")) {
+						currentState = MachineStates.StateS;
+					} else {
+					}
+					break;
+				case StateS:
+					if (currentChar.equals("U")) {
+						currentState = MachineStates.StateT;
+					} else {
+					}
+					break;
+				case StateT:
+					if (currentChar.equals(" ")) {
+						currentState = MachineStates.StateU;
+					} else {
+					}
+					break;
+				case StateU:
+					if (currentChar.equals("D")) {
+						currentState = MachineStates.StateV;
+					} else {
+					}
+					break;
+				case StateV:
+					if (currentChar.equals("O")) {
+						currentState = MachineStates.StateW;
+					} else {
+					}
+					break;
+				case StateY:
+					if (currentChar.equals("I")) {
+						currentState = MachineStates.StateZ;
+					} else {
+					}
+					break;
+				case StateZ:
+					if (currentChar.equals("T")) {
+						currentState = MachineStates.StateA2;
+					} else {
+					}
+					break;
+				}
+
+			}
+		}
+	}
+
+}
